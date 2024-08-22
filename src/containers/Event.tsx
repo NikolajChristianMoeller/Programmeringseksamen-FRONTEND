@@ -1,40 +1,35 @@
 import { Button, Paper } from "@mui/material";
-import { TTest1 } from "../types/test1.type.ts";
+import { TEvent } from "../types/event.type.ts";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import { useState } from "react";
-import PostTest1Dialog from "../components/test1/PostTest1Dialog.tsx";
-import PutTest1Dialog from "../components/test1/PutTest1Dialog.tsx";
-import useTest1 from "../hooks/useTest1.tsx";
+import PostEventDialog from "../components/event/PostEventDialog.tsx";
+import PutEventDialog from "../components/event/PutEventDialog.tsx";
+import useEvent from "../hooks/useEvent.tsx";
 
-export default function Test1() {
-    const {test1, createTest1, updateTest1, deleteTest1} = useTest1();
+export default function Event() {
+    const {event, createEvent, updateEvent, deleteEvent} = useEvent();
     const [openPost, setOpenPost] = useState(false);
     const [openPut, setOpenPut] = useState(false);
 
-    const defaultParticipant: TTest1 = {
+    const defaultParticipant: TEvent = {
         id: 0,
-        name: "",
-        address: "",
-        city: "",
-        zip: "",
-        country: "",
-        created: "",
-        updated: "",
-        numberOfRooms: 0
+        eventName: "",
+        minimumDuration: "",
+        maximumParticipants: "",
     }
 
-    const [selectedTest1, setSelectedTest1] = useState<TTest1>(defaultParticipant)
+    const [selectedEvent, setSelectedEvent] = useState<TEvent>(defaultParticipant)
 
     const handleOpenPost = () => {
         setOpenPost(true)
     }
 
     const handleOpenPut = (id: number) => {
-        const selectedRowTest1 = test1.find(
-            (test1) => test1.id === id
+        const selectedRowEvent = event.find(
+            (event) => event.id === id
         );
-        if (selectedRowTest1) {
-            setSelectedTest1(selectedRowTest1);
+        if (selectedRowEvent) {
+            setSelectedEvent(selectedRowEvent);
             setOpenPut(true);
         }
     };
@@ -45,21 +40,21 @@ export default function Test1() {
     }
 
     const handleDelete = (id: number) => {
-        deleteTest1(id);
+        deleteEvent(id);
     };
 
-    const rows = test1.map((p) =>({
+    const rows = event.map((p) =>({
         id: p.id,
-        name: p.name,
-        address: p.address,
-        rooms: p.numberOfRooms
+        eventName: p.eventName,
+        minimumDuration: p.minimumDuration,
+        maximumParticipants: p.maximumParticipants,
     }))
 
     const columns = [
         {field: "id", headerName: "ID", flex: 1},
-        {field: "name", headerName: "Name", flex: 2},
-        {field: "address", headerName: "Address", flex: 3},
-        {field: "rooms", headerName: "Rooms", flex: 4},
+        {field: "eventName", headerName: "Event Name", flex: 2},
+        {field: "minimumDuration", headerName: "Minimum Duration", flex: 3},
+        {field: "maximumParticipants", headerName: "Maximum Participants", flex: 4},
         {
             field: "update",
             headerName: "Update",
@@ -95,22 +90,22 @@ export default function Test1() {
         <>
             <Paper>
                 <Button onClick={handleOpenPost}>
-                    Create new Test1
+                    Create new Event
                 </Button>
                 <DataGrid columns={columns} rows={rows}/>
             </Paper>
 
-            <PostTest1Dialog
+            <PostEventDialog
                 open={openPost}
                 handleClose={handleClose}
-                createTest1={createTest1}
+                createEvent={createEvent}
             />
 
-            <PutTest1Dialog
+            <PutEventDialog
                 open={openPut}
                 handleClose={handleClose}
-                updateTest1={updateTest1}
-                selectedTest1={selectedTest1}
+                updateEvent={updateEvent}
+                selectedEvent={selectedEvent}
             />
         </>
     );

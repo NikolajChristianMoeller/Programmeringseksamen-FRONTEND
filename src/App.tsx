@@ -4,7 +4,11 @@ import { SnackbarProvider } from "notistack";
 import FallBack from "./containers/FallBack.tsx";
 import NavBar from "./components/NavBar.tsx";
 import Home from "./containers/Home.tsx";
-import Test1 from "./containers/Test1.tsx";
+import Discipline from "./containers/Discipline.tsx";
+import Event from "./containers/Event.tsx";
+import Participant from "./containers/Participant.tsx";
+import Timeslot from "./containers/Timeslot.tsx";
+import Track from "./containers/Track.tsx";
 
 export default function App() {
     return (
@@ -18,28 +22,24 @@ export default function App() {
                         element={<Home />}
                     />
                     <Route
-                        path="/test1"
-                        element={<Test1 />}
+                        path="/disciplines"
+                        element={<Discipline />}
                     />
                     <Route
-                        path="/test2"
-                        element={<Test2 />}
+                        path="/events"
+                        element={<Event />}
                     />
                     <Route
-                        path="/test3"
-                        element={<Test3 />}
+                        path="/participants"
+                        element={<Participant />}
                     />
                     <Route
-                        path="/test4"
-                        element={<Test4 />}
+                        path="/timeslots"
+                        element={<Timeslot />}
                     />
                     <Route
-                        path="/test5"
-                        element={<Test5 />}
-                    />
-                    <Route
-                        path="/test6"
-                        element={<Test6 />}
+                        path="/tracks"
+                        element={<Track />}
                     />
                     <Route
                         path="/*"

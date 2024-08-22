@@ -59,7 +59,7 @@ export default function Navbar() {
                             <HomeIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test1">
+                    <Tooltip title="Discipline">
                         <IconButton
                             component={Link}
                             to="/test1"
