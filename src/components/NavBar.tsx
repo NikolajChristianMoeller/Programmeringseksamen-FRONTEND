@@ -62,57 +62,49 @@ export default function Navbar() {
                     <Tooltip title="Discipline">
                         <IconButton
                             component={Link}
-                            to="/test1"
+                            to="/disciplines"
                             sx={{ color: theme.palette.text.primary }}
                         >
                             <ApartmentIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test2">
+                    <Tooltip title="Event">
                         <IconButton
                             component={Link}
-                            to="/test2"
+                            to="/events"
                             sx={{ color: theme.palette.text.primary }}
                         >
                             <HotelIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test3">
+                    <Tooltip title="Participant">
                         <IconButton
                             component={Link}
-                            to="/test3"
+                            to="/participants"
                             sx={{ color: theme.palette.text.primary }}
                         >
                             <HailIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test4">
+                    <Tooltip title="Time Slot">
                         <IconButton
                             component={Link}
-                            to="/test4"
+                            to="/timeslots"
                             sx={{ color: theme.palette.text.primary }}
                         >
                             <LibraryBooksIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test5">
+                    <Tooltip title="Track">
                         <IconButton
                             component={Link}
-                            to="/test5"
+                            to="/tracks"
                             sx={{ color: theme.palette.text.primary }}
                         >
                             <LibraryBooksIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Test6">
-                        <IconButton
-                            component={Link}
-                            to="/test6"
-                            sx={{ color: theme.palette.text.primary }}
-                        >
-                            <LibraryBooksIcon />
-                        </IconButton>
-                    </Tooltip>
+
                 </Box>
             </Toolbar>
         </AppBar>

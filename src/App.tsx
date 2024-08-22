@@ -7,7 +7,7 @@ import Home from "./containers/Home.tsx";
 import Discipline from "./containers/Discipline.tsx";
 import Event from "./containers/Event.tsx";
 import Participant from "./containers/Participant.tsx";
-import Timeslot from "./containers/Timeslot.tsx";
+import Timeslot from "./containers/TimeSlot.tsx";
 import Track from "./containers/Track.tsx";
 
 export default function App() {

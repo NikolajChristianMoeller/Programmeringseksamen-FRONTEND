@@ -8,7 +8,7 @@ type TPostTimeSlotDialogProps = {
     createTimeSlot: (timeSlot: TTimeSlotCreateAndUpdate ) => void
 }
 
-export default function PostEventDialog({open, handleClose, createTimeSlot}: TPostTimeSlotDialogProps) {
+export default function PostTimeSlotDialog({open, handleClose, createTimeSlot}: TPostTimeSlotDialogProps) {
 
     const [date, setDate] = useState<string>("");
     const [startTime, setStartTime] = useState<string>("");

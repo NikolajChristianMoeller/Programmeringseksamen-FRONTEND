@@ -4,7 +4,7 @@ import type { TTrack } from "../types/track.type.ts";
 
 export default function useTrack() {
 
-    const [track, setTrack] = useState<TTrack[]>([]);
+    const [tracks, setTracks] = useState<TTrack[]>([]);  // Renamed to 'tracks'
 
     useEffect(() => {
         void getTracks();
@@ -13,7 +13,7 @@ export default function useTrack() {
     const getTracks = async () => {
         try {
             const res = await Api.get("tracks");
-            setTrack(res)
+            setTracks(res)  // Updated to 'tracks'
         }
         catch (e) {
             console.error(e);
@@ -23,14 +23,14 @@ export default function useTrack() {
     const deleteTrack = async (id: number): Promise<void> => {
         try {
             await Api.delete("tracks", id);
-            setTrack((prev) => (prev ? prev.filter((track) => track.id !== id) : []));
+            setTracks((prev) => (prev ? prev.filter((track) => track.id !== id) : []));
         } catch (e) {
             console.error(e);
         }
     };
 
     return {
-        track,
+        tracks,  // Updated to 'tracks'
         deleteTrack
     }
 }
