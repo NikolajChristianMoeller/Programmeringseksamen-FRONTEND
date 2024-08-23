@@ -4,10 +4,3 @@ export type TDiscipline = {
     approxDuration: string;
     numberOfParticipants: number;
 };
-
-export type TDisciplineCreateAndUpdate = {
-    id?: number | null;
-    disciplineName: string;
-    approxDuration: string;
-
-};
