@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
 import Api from "../utils/Api.tsx";
+import {TTrack} from "../types/track.type.ts";
 
 export default function useTrack() {
-
-    type TTrack = {
-        id: number
-        name: string,
-        trackType: string,
-        date: string,
-        trackValue: string
-    }
 
     const [tracks, setTrack] = useState<TTrack[]>([]);  // Renamed to 'tracks'
 

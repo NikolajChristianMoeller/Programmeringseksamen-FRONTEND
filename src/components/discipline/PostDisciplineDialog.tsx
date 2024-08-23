@@ -1,11 +1,11 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField} from "@mui/material";
-import {TDisciplineCreateAndUpdate} from "../../types/discipline.type.ts";
+import {TDiscipline} from "../../types/discipline.type.ts";
 import {useState} from "react";
 
 type TPostDisciplineDialogProps = {
     open: boolean,
     handleClose: () => void
-    createDiscipline: (discipline: TDisciplineCreateAndUpdate ) => void
+    createDiscipline: (discipline: TDiscipline ) => void
 }
 
 export default function PostDisciplineDialog({open, handleClose, createDiscipline}: TPostDisciplineDialogProps) {
@@ -15,7 +15,7 @@ export default function PostDisciplineDialog({open, handleClose, createDisciplin
 
     const handleCreate = () => {
 
-        const newDiscipline: TDisciplineCreateAndUpdate = {
+        const newDiscipline: TDiscipline = {
             id: 0,
             disciplineName: disciplineName,
             approxDuration: approxDuration,

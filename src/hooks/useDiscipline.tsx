@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Api from "../utils/Api.tsx";
-import {TDiscipline, TDisciplineCreateAndUpdate} from "../types/discipline.type.ts";
+import {TDiscipline} from "../types/discipline.type.ts";
 
 export default function useDiscipline() {
 
@@ -20,7 +20,7 @@ export default function useDiscipline() {
         }
     }
 
-    const createDiscipline = async (discipline: TDisciplineCreateAndUpdate) => {
+    const createDiscipline = async (discipline: TDiscipline) => {
         try {
             const res = await Api.post("disciplines", discipline);
             setDiscipline((prev) => [...prev, res]);
@@ -31,7 +31,7 @@ export default function useDiscipline() {
     }
 
     const updateDiscipline = async (
-        updatedDiscipline: TDisciplineCreateAndUpdate,
+        updatedDiscipline: TDiscipline,
         id: number
     ): Promise<void> => {
         try {

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import Api from "../utils/Api.tsx";
-import {TParticipant, TParticipantCreateAndUpdate} from "../types/participant.type.ts";
+import {TParticipant} from "../types/participant.type.ts";
 
 export default function useParticipant() {
 
     const [participant, setParticipant] = useState<TParticipant[]>([]);
 
     useEffect(() => {
-        void getParticipants();
+        void getParticipant();
     },[])
 
-    const getParticipants = async () => {
+    const getParticipant = async () => {
         try {
             const res = await Api.get("participants");
             setParticipant(res)
@@ -20,7 +20,7 @@ export default function useParticipant() {
         }
     }
 
-    const createParticipant = async (participants: TParticipantCreateAndUpdate) => {
+    const createParticipant = async (participants: TParticipant) => {
         try {
             const res = await Api.post("participants", participants);
             setParticipant((prev) => [...prev, res]);
@@ -31,7 +31,7 @@ export default function useParticipant() {
     }
 
     const updateParticipant = async (
-        updatedParticipant: TParticipantCreateAndUpdate,
+        updatedParticipant: TParticipant,
         id: number
     ): Promise<void> => {
         try {

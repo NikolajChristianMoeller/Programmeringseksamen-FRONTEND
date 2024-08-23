@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField } from "@mui/material";
-import { TDisciplineCreateAndUpdate } from "../../types/discipline.type.ts";
+import { TDiscipline } from "../../types/discipline.type.ts";
 
 type PutDisciplineDialogProps = {
     open: boolean;
     handleClose: () => void;
-    selectedDiscipline: TDisciplineCreateAndUpdate;
-    updateDiscipline: (updatedDiscipline: TDisciplineCreateAndUpdate, id: number) => void;
+    selectedDiscipline: TDiscipline;
+    updateDiscipline: (updatedDiscipline: TDiscipline, id: number) => void;
 };
 
 export default function PutDisciplineDialog({
@@ -26,7 +26,7 @@ export default function PutDisciplineDialog({
     }, [selectedDiscipline]);
 
     const handleUpdate = () => {
-        const newDiscipline: TDisciplineCreateAndUpdate = {
+        const newDiscipline: TDiscipline = {
             disciplineName,
             approxDuration,
         };

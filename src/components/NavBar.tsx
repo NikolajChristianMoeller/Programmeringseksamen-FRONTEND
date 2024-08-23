@@ -38,16 +38,16 @@ export default function Navbar() {
                         component="span"
                         sx={{ color: theme.palette.primary.main }}
                     >
-                        Q
+                        A
                     </Box>
-                    uick
+                    tlætikstævne
                     <Box
                         component="span"
                         sx={{ color: theme.palette.primary.main }}
                     >
-                        B
+                        P
                     </Box>
-                    ook
+                    lanlægning
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Tooltip title="Home">
