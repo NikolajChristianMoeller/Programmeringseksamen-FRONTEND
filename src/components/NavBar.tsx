@@ -59,7 +59,7 @@ export default function Navbar() {
                             <HomeIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Discipline">
+                    <Tooltip title="Disciplines">
                         <IconButton
                             component={Link}
                             to="/disciplines"
@@ -68,7 +68,7 @@ export default function Navbar() {
                             <ApartmentIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Event">
+                    <Tooltip title="Events">
                         <IconButton
                             component={Link}
                             to="/events"
@@ -77,7 +77,7 @@ export default function Navbar() {
                             <HotelIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Participant">
+                    <Tooltip title="Participants">
                         <IconButton
                             component={Link}
                             to="/participants"
@@ -86,7 +86,7 @@ export default function Navbar() {
                             <HailIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Time Slot">
+                    <Tooltip title="Time Slots">
                         <IconButton
                             component={Link}
                             to="/timeslots"
@@ -95,7 +95,7 @@ export default function Navbar() {
                             <LibraryBooksIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title="Track">
+                    <Tooltip title="Tracks">
                         <IconButton
                             component={Link}
                             to="/tracks"

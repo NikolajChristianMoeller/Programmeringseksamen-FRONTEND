@@ -8,7 +8,6 @@ import Discipline from "./containers/Discipline.tsx";
 import Event from "./containers/Event.tsx";
 import Participant from "./containers/Participant.tsx";
 import Timeslot from "./containers/TimeSlot.tsx";
-import Track from "./containers/Track.tsx";
 
 export default function App() {
     return (
@@ -36,10 +35,6 @@ export default function App() {
                     <Route
                         path="/timeslots"
                         element={<Timeslot />}
-                    />
-                    <Route
-                        path="/tracks"
-                        element={<Track />}
                     />
                     <Route
                         path="/*"
