@@ -52,6 +52,7 @@ export default function useParticipant() {
 
     return {
         participant,
+        getParticipant,
         createParticipant,
         updateParticipant
     }

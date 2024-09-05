@@ -1,8 +1,11 @@
+import { TEvent } from "./event.type.ts";
+
 export type TTimeSlot = {
     id: number;
     date: string;
     startTime: string;
     endTime: string;
+    events: TEvent[];
 };
 
 export type TTimeSlotCreateAndUpdate = {
@@ -10,4 +13,5 @@ export type TTimeSlotCreateAndUpdate = {
     date: string;
     startTime: string;
     endTime: string;
+    events: TEvent[];
 };

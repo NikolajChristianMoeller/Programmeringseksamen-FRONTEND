@@ -3,6 +3,7 @@ export type TAgeGroup = "KIDS" | "YOUTH" | "JUNIOR" | "ADULT" | "SENIOR";
 
 export type TParticipant = {
     id: number;
+    disciplineId: number;
     fullName: string
     participantNumber: number;
     gender: TGender;
@@ -11,6 +12,7 @@ export type TParticipant = {
 
 export type TParticipantCreateAndUpdate = {
     id?: number | null;
+    disciplineId: number;
     fullName: string;
     participantNumber: number;
     gender: TGender;

@@ -4,7 +4,7 @@ import {TTrack} from "../types/track.type.ts";
 
 export default function useTrack() {
 
-    const [tracks, setTrack] = useState<TTrack[]>([]);  // Renamed to 'tracks'
+    const [track, setTrack] = useState<TTrack[]>([]);  // Renamed to 'tracks'
 
     useEffect(() => {
         void getTracks();
@@ -21,7 +21,7 @@ export default function useTrack() {
     }
 
     return {
-        tracks,
+        track,
 
     }
 }
