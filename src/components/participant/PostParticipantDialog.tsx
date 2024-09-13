@@ -6,9 +6,10 @@ type TPostParticipantDialogProps = {
     open: boolean,
     handleClose: () => void
     createParticipant: (participant: TParticipantCreateAndUpdate ) => void
+    disciplineId: number
 }
 
-export default function PostParticipantDialog({open, handleClose, createParticipant}: TPostParticipantDialogProps) {
+export default function PostParticipantDialog({open, handleClose, createParticipant, disciplineId}: TPostParticipantDialogProps) {
 
     const [fullName, setFullName] = useState("");
     const [participantNumber, setParticipantNumber] = useState(0);
@@ -18,10 +19,10 @@ export default function PostParticipantDialog({open, handleClose, createParticip
     const handleCreate = () => {
         const newParticipant: TParticipantCreateAndUpdate = {
             fullName,
+            disciplineId,
             participantNumber,
             gender,
             ageGroup,
-
         }
         createParticipant(newParticipant);
         setFullName("");
@@ -78,10 +79,7 @@ export default function PostParticipantDialog({open, handleClose, createParticip
                                 onChange={(e) => setAgeGroup(e.target.value as TAgeGroup)}
                             />
                         </Grid>
-
-
                     </Grid>
-
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

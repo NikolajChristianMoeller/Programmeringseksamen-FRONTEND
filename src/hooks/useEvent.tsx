@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Api from "../utils/Api.tsx";
-import type { TEvent, TEventCreateAndUpdate } from "../types/event.type.ts";
+import type { TEventCreateAndUpdate } from "../types/event.type.ts";
 
 export default function useEvent() {
 
-    const [event, setEvent] = useState<TEvent[]>([]);
+    const [event, setEvent] = useState<TEventCreateAndUpdate[]>([]);
 
     useEffect(() => {
         void getEvents();
@@ -22,6 +22,7 @@ export default function useEvent() {
 
     const createEvent = async (event: TEventCreateAndUpdate) => {
         try {
+            console.log("this is what should be send:", event)
             const res = await Api.post("events", event);
             setEvent((prev) => [...prev, res]);
         }
@@ -63,6 +64,6 @@ export default function useEvent() {
         event,
         createEvent,
         updateEvent,
-        deleteEvent
+        deleteEvent,
     }
 }

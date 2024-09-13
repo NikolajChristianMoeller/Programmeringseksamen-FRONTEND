@@ -1,8 +1,14 @@
-export type TTrack = {
+ export type TTrackType = "FIELD" | "TRACK";
+ export type TTrackShape = "OVAL" | "STRAIGHT";
+ export type TTrackSurface = "GRASS" | "SAND";
+ export type TTrackLength = "METERS" | "KILOMETERS" | "MILES";
+
+ export type TTrack = {
     id: number;
-    typeOfTrack: string;
-    shapeType: string;
-    surfaceType: string;
-    trackLength: number;
-    lanes: string;
+    trackType: TTrackType;
+    trackShape: TTrackShape;
+    trackSurface: TTrackSurface;
+    trackLength: TTrackLength;
+    lanes: number;
+    disciplines: number[];
 };

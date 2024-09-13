@@ -49,11 +49,11 @@ export default function useDiscipline() {
             console.error(e);
         }
     };
-    
 
     return {
         discipline,
         createDiscipline,
-        updateDiscipline
+        updateDiscipline,
+        getDisciplines
     }
 }

@@ -1,10 +1,10 @@
 import { AppBar, Toolbar, Typography, IconButton, Box, Tooltip, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
-import HotelIcon from "@mui/icons-material/Hotel";
-import HailIcon from '@mui/icons-material/Hail';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import ApartmentIcon from '@mui/icons-material/Apartment';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import EventIcon from '@mui/icons-material/Event';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import AddRoadIcon from '@mui/icons-material/AddRoad';
 
 /**
  * Navbar component.
@@ -48,6 +48,7 @@ export default function Navbar() {
                         P
                     </Box>
                     lanlægning
+
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Tooltip title="Home">
@@ -65,7 +66,7 @@ export default function Navbar() {
                             to="/disciplines"
                             sx={{ color: theme.palette.text.primary }}
                         >
-                            <ApartmentIcon />
+                            <SportsBasketballIcon />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Events">
@@ -74,9 +75,10 @@ export default function Navbar() {
                             to="/events"
                             sx={{ color: theme.palette.text.primary }}
                         >
-                            <HotelIcon />
+                            <EventIcon />
                         </IconButton>
                     </Tooltip>
+                    {/*}
                     <Tooltip title="Participants">
                         <IconButton
                             component={Link}
@@ -86,13 +88,14 @@ export default function Navbar() {
                             <HailIcon />
                         </IconButton>
                     </Tooltip>
+                    */}
                     <Tooltip title="Time Slots">
                         <IconButton
                             component={Link}
                             to="/timeslots"
                             sx={{ color: theme.palette.text.primary }}
                         >
-                            <LibraryBooksIcon />
+                            <AccessTimeIcon />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Tracks">
@@ -101,7 +104,7 @@ export default function Navbar() {
                             to="/tracks"
                             sx={{ color: theme.palette.text.primary }}
                         >
-                            <LibraryBooksIcon />
+                            <AddRoadIcon />
                         </IconButton>
                     </Tooltip>
 

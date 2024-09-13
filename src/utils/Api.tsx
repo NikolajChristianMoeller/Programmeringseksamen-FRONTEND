@@ -29,6 +29,19 @@ export default class Api {
         return response.json();
     }
 
+    static async add(endpoint: string, body: object | null) {
+        const response = await fetch(`${this.BASE_URL}${endpoint}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        });
+        return response.json();
+    }
+
+
+
     /**
      * This method is used to make a PUT request to the server.
      * @param endpoint
@@ -43,6 +56,7 @@ export default class Api {
             },
             body: JSON.stringify(body)
         });
+
         return response.json();
     }
 
@@ -68,8 +82,15 @@ export default class Api {
      * @param endpoint
      * @param id
      */
-    static async delete(endpoint: string, id: number) {
+        static async delete(endpoint: string, id: number) {
         const response = await fetch(`${this.BASE_URL}${endpoint}/${id}`, {
+            method: "DELETE"
+        });
+        return response.json();
+    }
+
+    static async remove(endpoint: string) {
+        const response = await fetch(`${this.BASE_URL}${endpoint}`, {
             method: "DELETE"
         });
         return response.json();

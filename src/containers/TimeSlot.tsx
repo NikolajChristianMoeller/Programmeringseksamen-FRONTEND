@@ -5,20 +5,27 @@ import { useState } from "react";
 import PostTimeSlotDialog from "../components/timeslot/PostTimeSlotDialog.tsx";
 import PutTimeSlotDialog from "../components/timeslot/PutTimeSlotDialog.tsx";
 import useTimeSlot from "../hooks/useTimeSlot.tsx";
+import useEvent from "../hooks/useEvent.tsx";
+import RemoveEventFromTimeSlotDialog from "../components/timeslot/RemoveEventFromTimeSlotDialog.tsx";
+import PostEventToTimeSlotDialog from "../components/timeslot/PostEventToTimeSlotDialog.tsx";
 
 export default function TimeSlot() {
-    const {timeSlot, createTimeSlot, updateTimeSlot, deleteTimeSlot} = useTimeSlot();
+    const {timeSlot, createTimeSlot, updateTimeSlot, deleteTimeSlot, deleteEventFromTimeSlot, postEventToTimeSlot} = useTimeSlot();
+    const {availableEvents} = useEvent
     const [openPost, setOpenPost] = useState(false);
     const [openPut, setOpenPut] = useState(false);
+    const [openRemoveEvent, setOpenRemoveEvent] = useState(false);
+    const [openPostEvent, setOpenPostEvent] = useState(false);
 
-    const defaultParticipant: TTimeSlot = {
+    const defaultTimeSlot: TTimeSlot = {
         id: 0,
-        date: "",
-        startTime: "",
-        endTime: "",
+        date: "2024-01-01",
+        startTime: "2024-08-08T09:00:00",
+        endTime: "2024-08-08T011:00:00",
+        events: []
     }
 
-    const [selectedTimeSlot, setSelectedTimeSlot] = useState<TTimeSlot>(defaultParticipant)
+    const [selectedTimeSlot, setSelectedTimeSlot] = useState<TTimeSlot>(defaultTimeSlot)
 
     const handleOpenPost = () => {
         setOpenPost(true)
@@ -37,28 +44,52 @@ export default function TimeSlot() {
     const handleClose = () => {
         setOpenPost(false);
         setOpenPut(false);
+        setOpenRemoveEvent(false);
+        setOpenPostEvent(false);
     }
 
     const handleDelete = (id: number) => {
         deleteTimeSlot(id);
     };
 
+    const handleDeleteEventFromTimeSlot = (id: number) => {
+        const selectedRowTimeSlot = timeSlot.find(
+            (timeSlot) => timeSlot.id === id
+        );
+        if (selectedRowTimeSlot) {
+            setSelectedTimeSlot(selectedRowTimeSlot);
+            setOpenRemoveEvent(true);
+        }
+    }
+
+    const handlePostEventToTimeSlot = (id: number) => {
+        const selectedRowTimeSlot = timeSlot.find(
+            (timeSlot) => timeSlot.id === id
+        );
+        if (selectedRowTimeSlot) {
+            setSelectedTimeSlot(selectedRowTimeSlot);
+            setOpenPostEvent(true);
+        }
+    }
+
     const rows = timeSlot.map((p) =>({
         id: p.id,
         date: p.date,
+        events: p.events.map((event) => event.eventName).join(", "),
         startTime: p.startTime,
         endTime: p.endTime
     }))
 
     const columns = [
-        {field: "id", headerName: "ID", flex: 1},
-        {field: "date", headerName: "Time Slot Date", flex: 2},
-        {field: "startTime", headerName: "Start Time", flex: 3},
-        {field: "endTime", headerName: "End Time", flex: 4},
+        {field: "id", headerName: "ID", flex: 0.5},
+        {field: "date", headerName: "Date", flex: 1.6},
+        {field: "events", headerName: "Events", flex: 2},
+        {field: "startTime", headerName: "Start Time", flex: 1.5},
+        {field: "endTime", headerName: "End Time", flex: 1.8},
         {
             field: "update",
             headerName: "Update",
-            flex: 5,
+            flex: 1.4,
             renderCell: (params: GridCellParams) => (
                 <Button
                     variant="contained"
@@ -69,11 +100,10 @@ export default function TimeSlot() {
                 </Button>
             )
         },
-
         {
             field: "delete",
             headerName: "Delete",
-            flex: 6,
+            flex: 1.4,
             renderCell: (params: GridCellParams) => (
                 <Button
                     variant="contained"
@@ -83,12 +113,41 @@ export default function TimeSlot() {
                     Delete
                 </Button>
             )
+        },
+        {
+            field: "removeEvent",
+            headerName: "Remove an Event",
+            flex: 2,
+            renderCell: (params: GridCellParams) => (
+                <Button
+                    variant="contained"
+                    color="warning"
+                    onClick={() => handleDeleteEventFromTimeSlot(params.row.id as number)}
+                >
+                    Remove an Event
+                </Button>
+            )
+        },
+        {
+            field: "postEvent",
+            headerName: "Add an Event",
+            flex: 1.7,
+            renderCell: (params: GridCellParams) => (
+                <Button
+                    variant="contained"
+                    color="success"
+                    onClick={() => handlePostEventToTimeSlot(params.row.id as number)}
+                >
+                    Add an Event
+                </Button>
+            )
         }
     ]
 
     return (
         <>
             <Paper>
+                <h2>All Time Slots</h2>
                 <Button onClick={handleOpenPost}>
                     Create new TimeSlot
                 </Button>
@@ -106,6 +165,23 @@ export default function TimeSlot() {
                 handleClose={handleClose}
                 updateTimeSlot={updateTimeSlot}
                 selectedTimeSlot={selectedTimeSlot}
+                events={availableEvents}
+            />
+
+            <RemoveEventFromTimeSlotDialog
+                open={openRemoveEvent}
+                handleClose={handleClose}
+                deleteEventFromTimeSlot={deleteEventFromTimeSlot}
+                removableEvents={selectedTimeSlot.events}
+                timeSlotId={selectedTimeSlot.id as number}
+            />
+
+            <PostEventToTimeSlotDialog
+                open={openPostEvent}
+                handleClose={handleClose}
+                postEventToTimeSlot={postEventToTimeSlot}
+                postableEvents={selectedTimeSlot.events}
+                timeSlotId={selectedTimeSlot.id as number}
             />
         </>
     );

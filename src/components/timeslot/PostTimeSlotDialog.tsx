@@ -8,21 +8,29 @@ type TPostTimeSlotDialogProps = {
     createTimeSlot: (timeSlot: TTimeSlotCreateAndUpdate ) => void
 }
 
-export default function PostTimeSlotDialog({open, handleClose, createTimeSlot}: TPostTimeSlotDialogProps) {
-
+export default function PostTimeSlotDialog({
+                                               open,
+                                               handleClose,
+                                               createTimeSlot}: TPostTimeSlotDialogProps) {
     const [date, setDate] = useState<string>("");
     const [startTime, setStartTime] = useState<string>("");
     const [endTime, setEndTime] = useState<string>("");
+    //const [events, setEvents] = useState<number[]>([]);
 
     const handleCreate = () => {
 
         const newTimeSlot: TTimeSlotCreateAndUpdate = {
-            id: 0,
-            date: date,
-            startTime: startTime,
-            endTime: endTime,
+            date,
+            startTime,
+            endTime,
+            events: []
         }
         createTimeSlot(newTimeSlot);
+        setDate("");
+        setStartTime("");
+        setEndTime("");
+        //setEvents([]);
+
         handleClose();
     }
 
@@ -39,32 +47,47 @@ export default function PostTimeSlotDialog({open, handleClose, createTimeSlot}: 
 
                     <Grid container spacing={2}>
 
-                        <Grid item xs={12}>
+                        <Grid item xs={6}>
                             <TextField
                                 label="Date"
                                 variant="outlined"
                                 fullWidth
-                                onChange={(e) => setDate(e.target.value)}
+                                onChange={(e) =>
+                                    setDate(e.target.value)}
                             />
                         </Grid>
 
-                        <Grid item xs={12}>
+                        <Grid item xs={6}>
                             <TextField
-                                label="Address"
+                                label="Start Time"
                                 variant="outlined"
                                 fullWidth
-                                onChange={(e) => setStartTime(e.target.value)}
+                                onChange={(e) =>
+                                    setStartTime(e.target.value)}
                             />
                         </Grid>
 
-                        <Grid item xs={12}>
+                        <Grid item xs={6}>
                             <TextField
-                                label="City"
+                                label="End Time"
                                 variant="outlined"
                                 fullWidth
-                                onChange={(e) => setEndTime(e.target.value)}
+                                onChange={(e) =>
+                                    setEndTime(e.target.value)}
                             />
                         </Grid>
+
+                        {/*
+                        <Grid item xs={6}>
+                            <TextField
+                                label="Events"
+                                variant="outlined"
+                                fullWidth
+                                onChange={(e) =>
+                                    setEvents(e.target.value)}
+                            />
+                        </Grid>
+                        }*/}
 
                     </Grid>
 
